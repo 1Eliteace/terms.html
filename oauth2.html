@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Shop - OAuth2 Invite Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-generate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-copy {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-copy:hover {
+            background: #218838;
+        }
+        
+        .btn-reset {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-reset:hover {
+            background: #c82333;
+        }
+        
+        .result-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e7f3ff;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .result-section.active {
+            display: block;
+        }
+        
+        .result-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        #generatedUrl {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+        
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: #856404;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .invite-button {
+            display: inline-block;
+            background: #5865F2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        
+        .invite-button:hover {
+            background: #4752C4;
+        }
+        
+        @media (max-width: 768px) {
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Elite Shop</h1>
+            <p class="subtitle">OAuth2 & Invite Link Generator</p>
+        </header>
+        
+        <div class="section">
+            <h2>Bot-Informationen</h2>
+            
+            <div class="form-group">
+                <label for="clientId">Client ID (von Discord Developer Portal):</label>
+                <input type="text" id="clientId" placeholder="z.B. 1234567890123456789" required>
+                <small style="color: #666;">Findest du unter Application → General Information</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="redirectUri">Redirect URI (OAuth2 Callback):</label>
+                <input type="text" id="redirectUri" placeholder="https://1eliteace.github.io/terms.html/callback" value="https://1eliteace.github.io/terms.html/callback">
+                <small style="color: #666;">Muss genau mit Discord Developer Portal übereinstimmen</small>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Scopes auswählen (Berechtigungen)</h2>
+            
+            <div class="info-box">
+                <strong>Tipp:</strong> Für einen Shop-Bot brauchst du normalerweise: identify, email, bot und applications.commands
+            </div>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="scope_identify" checked>
+                    <label for="scope_identify">identify</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="scope_email">
+                    <label for="scope_email">email</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="scope_guilds">
+                    <label for="scope_guilds">guilds</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="scope_bot" checked>
+                    <label for="scope_bot">bot</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="scope_app_commands" checked>
+                    <label for="scope_app_commands">applications.commands</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="scope_webhook">
+                    <label for="scope_webhook">webhook.incoming</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Bot-Permissions auswählen</h2>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="perm_send_messages" checked>
+                    <label for="perm_send_messages">Send Messages (8)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="perm_read_messages" checked>
+                    <label for="perm_read_messages">Read Messages (1024)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="perm_manage_roles" checked>
+                    <label for="perm_manage_roles">Manage Roles (268435456)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="perm_manage_messages" checked>
+                    <label for="perm_manage_messages">Manage Messages (8192)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="perm_react">
+                    <label for="perm_react">Add Reactions (64)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="perm_embed_links" checked>
+                    <label for="perm_embed_links">Embed Links (16384)</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-generate" onclick="generateUrl()">🔗 URL Generieren</button>
+            <button class="btn-reset" onclick="resetForm()">↻ Zurücksetzen</button>
+        </div>
+        
+        <div class="result-section" id="resultSection">
+            <div class="result-title">✅ Generierte URLs:</div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>OAuth2 Login URL:</strong>
+                <textarea id="generatedUrl" readonly></textarea>
+                <button class="btn-copy" onclick="copyToClipboard('generatedUrl')">📋 OAuth2 URL kopieren</button>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>Bot Invite URL:</strong>
+                <textarea id="inviteUrl" readonly></textarea>
+                <button class="btn-copy" onclick="copyToClipboard('inviteUrl')">📋 Invite URL kopieren</button>
+            </div>
+            
+            <div>
+                <strong>Direkt einladen:</strong><br>
+                <a id="directInvite" class="invite-button" target="_blank">+ Bot zu Server hinzufügen</a>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                ✅ In die Zwischenablage kopiert!
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function generateUrl() {
+            const clientId = document.getElementById('clientId').value.trim();
+            const redirectUri = document.getElementById('redirectUri').value.trim();
+            
+            if (!clientId) {
+                alert('⚠️ Bitte gib deine Client ID ein!');
+                return;
+            }
+            
+            // Scopes sammeln
+            let scopes = [];
+            if (document.getElementById('scope_identify').checked) scopes.push('identify');
+            if (document.getElementById('scope_email').checked) scopes.push('email');
+            if (document.getElementById('scope_guilds').checked) scopes.push('guilds');
+            if (document.getElementById('scope_bot').checked) scopes.push('bot');
+            if (document.getElementById('scope_app_commands').checked) scopes.push('applications.commands');
+            if (document.getElementById('scope_webhook').checked) scopes.push('webhook.incoming');
+            
+            // Permissions berechnen (addieren)
+            let permissions = 0;
+            if (document.getElementById('perm_send_messages').checked) permissions += 8;
+            if (document.getElementById('perm_read_messages').checked) permissions += 1024;
+            if (document.getElementById('perm_manage_roles').checked) permissions += 268435456;
+            if (document.getElementById('perm_manage_messages').checked) permissions += 8192;
+            if (document.getElementById('perm_react').checked) permissions += 64;
+            if (document.getElementById('perm_embed_links').checked) permissions += 16384;
+            
+            if (scopes.length === 0) {
+                alert('⚠️ Wähle mindestens einen Scope!');
+                return;
+            }
+            
+            // OAuth2 URL generieren
+            const oauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scopes.join('%20')}`;
+            
+            // Bot Invite URL generieren (mit bot scope und permissions)
+            const inviteUrlWithPerms = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&scope=bot%20applications.commands&permissions=${permissions}`;
+            
+            // Zeige die Ergebnisse
+            document.getElementById('generatedUrl').value = oauthUrl;
+            document.getElementById('inviteUrl').value = inviteUrlWithPerms;
+            document.getElementById('directInvite').href = inviteUrlWithPerms;
+            document.getElementById('resultSection').classList.add('active');
+        }
+        
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+            
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 2000);
+        }
+        
+        function resetForm() {
+            document.getElementById('clientId').value = '';
+            document.getElementById('resultSection').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
