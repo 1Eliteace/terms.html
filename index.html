@@ -12,54 +12,126 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
             min-height: 100vh;
-            padding: 20px 0;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.5"/><circle cx="80" cy="80" r="2" fill="white" opacity="0.5"/></svg>');
+            background-size: 50px 50px;
+            pointer-events: none;
+            animation: float 20s infinite linear;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-50px); }
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 20px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ee7752, transparent);
+            border-radius: 2px;
         }
         
         h1 {
-            color: #667eea;
-            font-size: 2.5em;
+            color: transparent;
+            background: linear-gradient(135deg, #ee7752 0%, #e73c7e 50%, #23a6d5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: 3.5em;
             margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            text-shadow: 0 10px 30px rgba(238, 119, 82, 0.2);
         }
         
         .subtitle {
             color: #666;
-            font-size: 0.95em;
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         h2 {
-            color: #667eea;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
+            color: transparent;
+            background: linear-gradient(135deg, #ee7752 0%, #e73c7e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 700;
         }
         
         p {
             margin-bottom: 15px;
             text-align: justify;
+            color: #444;
+            line-height: 1.8;
+            font-size: 1.05em;
         }
         
         ul, ol {
@@ -68,86 +140,155 @@
         }
         
         li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             text-align: justify;
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
         }
         
         .section {
-            margin-bottom: 25px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            border-radius: 5px;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(238, 119, 82, 0.08) 0%, rgba(35, 165, 213, 0.08) 100%);
+            border-left: 5px solid;
+            border-image: linear-gradient(180deg, #ee7752, #e73c7e) 1;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(238, 119, 82, 0.15);
         }
         
         .emoji {
-            font-size: 1.2em;
+            font-size: 1.5em;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
         
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9em;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(0, 0, 0, 0.1);
+            color: #888;
+            font-size: 0.95em;
         }
         
         .acceptance-section {
-            margin-top: 40px;
-            padding: 20px;
-            background: #e7f3ff;
-            border: 2px solid #667eea;
-            border-radius: 10px;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(238, 119, 82, 0.15) 0%, rgba(35, 165, 213, 0.15) 100%);
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #ee7752, #23a6d5) 1;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(238, 119, 82, 0.2);
         }
         
         .acceptance-title {
-            color: #667eea;
+            color: transparent;
+            background: linear-gradient(135deg, #ee7752 0%, #e73c7e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
             font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 15px;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .checkbox-group {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-group:hover {
+            background: rgba(255, 255, 255, 0.8);
         }
         
         .checkbox-group input[type="checkbox"] {
-            width: 22px;
-            height: 22px;
-            margin-right: 12px;
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
             margin-top: 2px;
             cursor: pointer;
-            accent-color: #667eea;
+            accent-color: #ee7752;
             flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-group input[type="checkbox"]:hover {
+            transform: scale(1.1);
         }
         
         .checkbox-label {
             cursor: pointer;
             color: #333;
+            font-weight: 500;
+            font-size: 1.05em;
         }
         
         .buttons-group {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
         
-        .btn-accept {
+        .btn-accept, .btn-discord {
             flex: 1;
-            min-width: 200px;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            min-width: 220px;
+            padding: 16px 30px;
             border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            font-weight: bold;
+            border-radius: 10px;
+            font-size: 1.05em;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-accept::before, .btn-discord::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-accept:hover::before, .btn-discord:hover::before {
+            left: 100%;
+        }
+        
+        .btn-accept {
+            background: linear-gradient(135deg, #ee7752 0%, #e73c7e 100%);
+            color: white;
         }
         
         .btn-accept:disabled {
@@ -157,44 +298,31 @@
         }
         
         .btn-accept:not(:disabled):hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(238, 119, 82, 0.4);
         }
         
         .btn-discord {
-            flex: 1;
-            min-width: 200px;
-            padding: 15px;
-            background: #5865F2;
+            background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
             color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.3s;
         }
         
         .btn-discord:hover {
-            background: #4752C4;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(88, 101, 242, 0.4);
         }
         
         .success-message {
-            background: #d4edda;
-            border: 1px solid #28a745;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.15), rgba(76, 175, 80, 0.15));
+            border: 2px solid #28a745;
             color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
             display: none;
             text-align: center;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
         }
         
         .success-message.show {
@@ -213,17 +341,29 @@
             }
         }
         
+        .intro-text {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            color: #333;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(238, 119, 82, 0.1), rgba(35, 165, 213, 0.1));
+            border-radius: 10px;
+            border-left: 4px solid #ee7752;
+        }
+        
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 30px 20px;
             }
             
             h1 {
-                font-size: 1.8em;
+                font-size: 2.2em;
             }
             
             h2 {
-                font-size: 1.2em;
+                font-size: 1.3em;
             }
             
             .buttons-group {
@@ -233,20 +373,24 @@
             .btn-accept, .btn-discord {
                 min-width: 100%;
             }
+            
+            header::after {
+                bottom: -15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🛍️ Elite Shop</h1>
+            <h1>🛍️ ELITE SHOP</h1>
             <p class="subtitle">Terms of Service</p>
         </header>
         
         <main>
-            <p style="text-align: center; font-weight: bold; font-size: 1.1em; margin-bottom: 30px;">
-                By accepting below you confirm that you have read and agree to all terms.
-            </p>
+            <div class="intro-text">
+                ✨ By accepting below you confirm that you have read and agree to all terms and conditions ✨
+            </div>
             
             <div class="section">
                 <h2><span class="emoji">♻️</span> Refunds</h2>
@@ -298,7 +442,9 @@
             </div>
             
             <div class="acceptance-section">
-                <div class="acceptance-title">✅ Accept Terms of Service</div>
+                <div class="acceptance-title">
+                    <span>✅</span> Accept Terms of Service
+                </div>
                 
                 <div class="checkbox-group">
                     <input type="checkbox" id="acceptTerms">
@@ -309,7 +455,7 @@
                 
                 <div class="buttons-group">
                     <button class="btn-accept" id="acceptBtn" disabled onclick="acceptTerms()">
-                        ✅ Accept Terms
+                        <span>✅</span> Accept Terms
                     </button>
                     <a href="https://discord.gg/QwQGmVShs4" class="btn-discord" target="_blank">
                         <span>💜</span> Join Discord Server
@@ -323,7 +469,7 @@
             
             <footer>
                 <p>&copy; 2026 Elite Shop. All rights reserved.</p>
-                <p>Last Update: 5. Juni 2026</p>
+                <p>Last Update: 6. Juni 2026</p>
             </footer>
         </main>
     </div>
