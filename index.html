@@ -157,13 +157,26 @@
             display: inline-block;
             background: linear-gradient(135deg, #D4AF37, #C9A961);
             color: #000;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 20px;
             font-size: 0.9em;
             font-weight: 700;
             margin-top: 15px;
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
             animation: pulse 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .badge:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .badge:active {
+            transform: scale(0.96);
         }
         
         @keyframes pulse {
@@ -547,6 +560,10 @@
             font-size: 0.9em;
         }
         
+        #terms-section {
+            scroll-margin-top: 20px;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 30px 20px;
@@ -585,7 +602,7 @@
         <header>
             <h1>🛍️ ELITE SHOP</h1>
             <p class="subtitle">Terms of Service</p>
-            <span class="badge">✨ Official Terms</span>
+            <button class="badge" onclick="scrollToTerms()">✨ Official Terms</button>
         </header>
         
         <div class="stats">
@@ -630,53 +647,55 @@
                 </div>
             </div>
             
-            <div class="section">
-                <h2><span class="emoji">♻️</span> Refunds</h2>
-                <p>
-                    No refunds will be issued on any orders under any circumstances.
-                </p>
-            </div>
-            
-            <div class="section">
-                <h2><span class="emoji">⏳</span> Support Window</h2>
-                <ul>
-                    <li><strong>🎵 Spotify Premium</strong> — 1 week</li>
-                    <li><strong>🎮 Minecraft Accounts</strong> — 1 week</li>
-                    <li><strong>📺 YouTube / Prime Video / Canva / CapCut Pro / Apple Music (FA)</strong> — 23 days</li>
-                    <li><strong>🤖 ChatGPT</strong> — 1 day</li>
-                    <li><strong>🚀 Discord Nitro</strong> — Full Warranty</li>
-                </ul>
-            </div>
-            
-            <div class="section">
-                <h2><span class="emoji">⚙️</span> Usage & Conduct</h2>
-                <ul>
-                    <li>No warranty on Nitro tokens or Spotify during mass wave revokes.</li>
-                    <li>Changing FA account credentials voids all warranty instantly.</li>
-                    <li>If our supplier fails to deliver, we cannot process any replacements.</li>
-                    <li>Staff members removed from the team forfeit all staff privileges.</li>
-                </ul>
-            </div>
-            
-            <div class="section">
-                <h2><span class="emoji">🛡️</span> Limitations</h2>
-                <p>
-                    All products are provided for educational purposes only. We are not responsible for buyer misuse or any illegal actions taken by the buyer.
-                </p>
-            </div>
-            
-            <div class="section">
-                <h2><span class="emoji">✏️</span> Changes to Terms</h2>
-                <p>
-                    We may update these terms at any time without prior notice. Continued use of the store constitutes acceptance of the latest version.
-                </p>
-            </div>
-            
-            <div class="section">
-                <h2><span class="emoji">⚖️</span> Liability</h2>
-                <p>
-                    If you own a service we sell and wish to have it removed, contact staff and we will action your request promptly.
-                </p>
+            <div id="terms-section">
+                <div class="section">
+                    <h2><span class="emoji">♻️</span> Refunds</h2>
+                    <p>
+                        No refunds will be issued on any orders under any circumstances.
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2><span class="emoji">⏳</span> Support Window</h2>
+                    <ul>
+                        <li><strong>🎵 Spotify Premium</strong> — 1 week</li>
+                        <li><strong>🎮 Minecraft Accounts</strong> — 1 week</li>
+                        <li><strong>📺 YouTube / Prime Video / Canva / CapCut Pro / Apple Music (FA)</strong> — 23 days</li>
+                        <li><strong>🤖 ChatGPT</strong> — 1 day</li>
+                        <li><strong>🚀 Discord Nitro</strong> — Full Warranty</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2><span class="emoji">⚙️</span> Usage & Conduct</h2>
+                    <ul>
+                        <li>No warranty on Nitro tokens or Spotify during mass wave revokes.</li>
+                        <li>Changing FA account credentials voids all warranty instantly.</li>
+                        <li>If our supplier fails to deliver, we cannot process any replacements.</li>
+                        <li>Staff members removed from the team forfeit all staff privileges.</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2><span class="emoji">🛡️</span> Limitations</h2>
+                    <p>
+                        All products are provided for educational purposes only. We are not responsible for buyer misuse or any illegal actions taken by the buyer.
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2><span class="emoji">✏️</span> Changes to Terms</h2>
+                    <p>
+                        We may update these terms at any time without prior notice. Continued use of the store constitutes acceptance of the latest version.
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2><span class="emoji">⚖️</span> Liability</h2>
+                    <p>
+                        If you own a service we sell and wish to have it removed, contact staff and we will action your request promptly.
+                    </p>
+                </div>
             </div>
             
             <div class="acceptance-section">
@@ -728,6 +747,11 @@
                 particle.style.animationDuration = (15 + Math.random() * 10) + 's';
                 container.appendChild(particle);
             }
+        }
+        
+        function scrollToTerms() {
+            const termsSection = document.getElementById('terms-section');
+            termsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         
         window.addEventListener('DOMContentLoaded', () => {
