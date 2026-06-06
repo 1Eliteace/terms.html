@@ -129,8 +129,16 @@
             color: #333;
         }
         
+        .buttons-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
         .btn-accept {
-            width: 100%;
+            flex: 1;
+            min-width: 200px;
             padding: 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -140,7 +148,6 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 15px;
         }
         
         .btn-accept:disabled {
@@ -152,6 +159,31 @@
         .btn-accept:not(:disabled):hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-discord {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px;
+            background: #5865F2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-discord:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
         }
         
         .success-message {
@@ -192,6 +224,14 @@
             
             h2 {
                 font-size: 1.2em;
+            }
+            
+            .buttons-group {
+                flex-direction: column;
+            }
+            
+            .btn-accept, .btn-discord {
+                min-width: 100%;
             }
         }
     </style>
@@ -267,9 +307,14 @@
                     </label>
                 </div>
                 
-                <button class="btn-accept" id="acceptBtn" disabled onclick="acceptTerms()">
-                    ✅ Accept Terms
-                </button>
+                <div class="buttons-group">
+                    <button class="btn-accept" id="acceptBtn" disabled onclick="acceptTerms()">
+                        ✅ Accept Terms
+                    </button>
+                    <a href="https://discord.gg/QwQGmVShs4" class="btn-discord" target="_blank">
+                        <span>💜</span> Join Discord Server
+                    </a>
+                </div>
                 
                 <div class="success-message" id="successMessage">
                     ✅ Terms accepted! Your acceptance has been saved.
