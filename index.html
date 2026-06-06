@@ -15,7 +15,7 @@
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #fff;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
             min-height: 100vh;
             padding: 40px 20px;
             position: relative;
@@ -30,8 +30,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
             pointer-events: none;
             animation: float 20s infinite linear;
             z-index: 0;
@@ -45,15 +45,15 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
             padding: 60px 40px;
             border-radius: 20px;
             box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 215, 0, 0.1),
-                0 0 40px rgba(255, 215, 0, 0.15);
+                0 20px 60px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(212, 175, 55, 0.15),
+                0 0 40px rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(212, 175, 55, 0.25);
             position: relative;
             z-index: 1;
             animation: slideUp 0.8s ease-out;
@@ -84,39 +84,39 @@
             transform: translateX(-50%);
             width: 150px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
             border-radius: 2px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
         }
         
         h1 {
-            color: #FFD700;
+            color: #D4AF37;
             font-size: 3.5em;
             margin-bottom: 10px;
             font-weight: 800;
             letter-spacing: -2px;
             text-shadow: 
-                0 0 30px rgba(255, 215, 0, 0.5),
-                0 10px 30px rgba(0, 0, 0, 0.5);
+                0 0 30px rgba(212, 175, 55, 0.6),
+                0 10px 30px rgba(0, 0, 0, 0.7);
             animation: glow 3s ease-in-out infinite;
         }
         
         @keyframes glow {
-            0%, 100% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.5); }
-            50% { text-shadow: 0 0 50px rgba(255, 215, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.5); }
+            0%, 100% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 10px 30px rgba(0, 0, 0, 0.7); }
+            50% { text-shadow: 0 0 50px rgba(212, 175, 55, 0.9), 0 10px 30px rgba(0, 0, 0, 0.7); }
         }
         
         .subtitle {
-            color: #FFD700;
+            color: #D4AF37;
             font-size: 1.1em;
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
         
         h2 {
-            color: #FFD700;
+            color: #D4AF37;
             margin-top: 40px;
             margin-bottom: 20px;
             font-size: 1.8em;
@@ -124,7 +124,7 @@
             align-items: center;
             gap: 12px;
             font-weight: 700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
         
         p {
@@ -151,28 +151,28 @@
         .section {
             margin-bottom: 30px;
             padding: 25px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.02) 100%);
-            border-left: 5px solid #FFD700;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border-left: 5px solid #D4AF37;
             border-radius: 10px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.12);
         }
         
         .section:hover {
             transform: translateX(5px);
             box-shadow: 
-                0 10px 30px rgba(255, 215, 0, 0.2),
-                inset 0 1px 0 rgba(255, 215, 0, 0.1);
-            border-color: rgba(255, 215, 0, 0.3);
+                0 10px 30px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(212, 175, 55, 0.12);
+            border-color: rgba(212, 175, 55, 0.4);
         }
         
         .emoji {
             font-size: 1.5em;
             display: inline-block;
             animation: bounce 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.4));
         }
         
         @keyframes bounce {
@@ -184,7 +184,7 @@
             text-align: center;
             margin-top: 50px;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
             color: #999;
             font-size: 0.95em;
         }
@@ -192,24 +192,24 @@
         .acceptance-section {
             margin-top: 50px;
             padding: 30px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 215, 0, 0.03) 100%);
-            border: 2px solid #FFD700;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.04) 100%);
+            border: 2px solid #D4AF37;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             box-shadow: 
-                0 10px 40px rgba(255, 215, 0, 0.2),
-                inset 0 1px 0 rgba(255, 215, 0, 0.1);
+                0 10px 40px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(212, 175, 55, 0.12);
         }
         
         .acceptance-title {
-            color: #FFD700;
+            color: #D4AF37;
             font-weight: bold;
             font-size: 1.3em;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
         
         .checkbox-group {
@@ -217,15 +217,15 @@
             align-items: flex-start;
             margin-bottom: 20px;
             padding: 15px;
-            background: rgba(255, 215, 0, 0.05);
+            background: rgba(212, 175, 55, 0.06);
             border-radius: 10px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
         
         .checkbox-group:hover {
-            background: rgba(255, 215, 0, 0.1);
-            border-color: rgba(255, 215, 0, 0.2);
+            background: rgba(212, 175, 55, 0.12);
+            border-color: rgba(212, 175, 55, 0.3);
         }
         
         .checkbox-group input[type="checkbox"] {
@@ -234,14 +234,14 @@
             margin-right: 15px;
             margin-top: 2px;
             cursor: pointer;
-            accent-color: #FFD700;
+            accent-color: #D4AF37;
             flex-shrink: 0;
             transition: all 0.3s ease;
         }
         
         .checkbox-group input[type="checkbox"]:hover {
             transform: scale(1.1);
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.6));
         }
         
         .checkbox-label {
@@ -262,7 +262,7 @@
             flex: 1;
             min-width: 220px;
             padding: 16px 30px;
-            border: 2px solid #FFD700;
+            border: 2px solid #D4AF37;
             border-radius: 10px;
             font-size: 1.05em;
             font-weight: 600;
@@ -273,7 +273,7 @@
             justify-content: center;
             gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
             position: relative;
             overflow: hidden;
         }
@@ -285,7 +285,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(212, 175, 55, 0.2);
             transition: left 0.3s ease;
             z-index: -1;
         }
@@ -295,7 +295,7 @@
         }
         
         .btn-accept {
-            background: linear-gradient(135deg, #FFD700 0%, #FFC700 100%);
+            background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
             color: #000;
         }
         
@@ -308,29 +308,29 @@
         .btn-accept:not(:disabled):hover {
             transform: translateY(-3px);
             box-shadow: 
-                0 15px 35px rgba(255, 215, 0, 0.4),
-                0 0 20px rgba(255, 215, 0, 0.3);
+                0 15px 35px rgba(212, 175, 55, 0.5),
+                0 0 20px rgba(212, 175, 55, 0.4);
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
         
         .btn-discord {
-            background: #1a1a1a;
-            color: #FFD700;
-            border-color: #FFD700;
+            background: #0a0a0a;
+            color: #D4AF37;
+            border-color: #D4AF37;
         }
         
         .btn-discord:hover {
             transform: translateY(-3px);
             box-shadow: 
-                0 15px 35px rgba(255, 215, 0, 0.3),
-                0 0 20px rgba(255, 215, 0, 0.2);
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+                0 15px 35px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
         }
         
         .success-message {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
-            border: 2px solid #FFD700;
-            color: #FFD700;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.06));
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
             padding: 18px;
             border-radius: 10px;
             margin-top: 20px;
@@ -338,7 +338,7 @@
             text-align: center;
             font-weight: 600;
             backdrop-filter: blur(10px);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
         
         .success-message.show {
@@ -362,13 +362,13 @@
             font-weight: 600;
             font-size: 1.1em;
             margin-bottom: 40px;
-            color: #FFD700;
+            color: #D4AF37;
             padding: 20px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
             border-radius: 10px;
-            border-left: 4px solid #FFD700;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            border-left: 4px solid #D4AF37;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
         
         @media (max-width: 768px) {
